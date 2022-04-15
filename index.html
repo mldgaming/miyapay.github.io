@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ISI SALDO MIYA PAY VIA WHATSAPP</title>
+<style>
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+background-color: rgb(243, 243, 243);
+}
+
+header {
+background-color: #ffffff;
+padding: 10px 20px;
+border-radius: 0 0 50px 50px;
+position: relative;
+}
+
+header::after {
+content: "";
+position: absolute;
+left: 0;
+right: 0;
+height: 100%;
+background-color: #ffffff;
+border-radius: 0 0 50px 50px;
+top: 15px;
+z-index: -1;
+}
+
+section {
+margin-top: 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+section p {
+color: rgb(61, 149, 231);
+font-size: 14px;
+}
+
+section a {
+display: inline-flex;
+justify-content: center;
+align-items: center;
+border-radius: 12px;
+gap: 2px;
+padding: 4px 20px;
+background-color: #fff;
+border: 2px solid #fff;
+color: #fff;
+font-size: 14px;
+}
+
+.cards {
+margin-top: 20px;
+background-color: #37474F;
+border-radius: 20px;
+padding: 10px 30px 15px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.card {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.cards .item {
+border: 3px solid #fff;
+padding: 2px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 10px;
+}
+
+.card p {
+font-size: 12px;
+color: #fff;
+}
+
+.provider {
+background-color: #172939;
+box-shadow: -8px -8px 20px rgb(255, 255, 255);
+margin: 50px 20px 20px;
+border-radius: 16px;
+padding: 30px 15px;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 20px;
+}
+
+.card-provider {
+width: 55px;
+height: 55px;
+box-shadow: 6px 6px 6px rgb(0, ,0 , 0.2), -6px -6px 6px rgb(23, 41, 57);
+background-color: #2a3e52;
+border-radius: 29%;
+padding: 6px;
+}
+
+img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 10px;
+}
+
+.tampilText {
+background-color: rgb(243, 243, 243);
+box-shadow: 6px 6px 6px rgb(0, 0, 0, 0.2), -6px -6px 6px rgb(255, 255, 255);
+margin: 40px 20px 20px;
+border-radius: 200px;
+padding: 6px;
+color: #525252;
+font-size: 10px;
+text-align: center;
+}
+
+#pesan.animasi {
+animation: hilangText 1s ease-in-out forwards;
+opacity: 0;
+transform: scale(0);
+}
+
+@keyframes hilangText {
+100% {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+#popup {
+position: fixed;
+inset: 0;
+z-index: 2;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #fff;
+opacity: 0;
+transform: scale(0);
+}
+
+#popup.popup {
+animation: popup 400ms ease-in-out forwards;
+}
+
+@keyframes popup {
+100% {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+.subpopup {
+background-color: rgb(0, 0, 0, 0.8);
+padding: 30px 15px 20px;
+border-radius: 16px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#popup img {
+width: 40px;
+height: 40px;
+object-fit: cover;
+border-radius: 50%;
+}
+
+h2 {
+margin-bottom: 40px;
+text-transform: uppercase;
+font-size: 16px;
+}
+
+.items-popup {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+row-gap: 20px;
+}
+
+#popup .item-popup {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#popup .item-popup {
+color: #fff;
+}
+
+#popup .item-popup p {
+font-size: 10px;
+margin-top: 5px;
+}
+
+a {
+text-decoration: none;
+}
+
+#popup-qris {
+position: fixed;
+inset: 0;
+display: grid;
+place-items: center;
+background-color: rgba(0, 0, 0, 0.5);
+opacity: 0;
+transform: scale(0);
+}
+
+#popup-qris.popup-qris {
+animation: popup-qris 400ms ease-in-out forwards;
+}
+
+@keyframes popup-qris {
+100% {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+#popup-qris > img {
+width: 300px;
+height: 300px;
+}
+
+
+<center></style>
+</head>
+<body>
+<header>
+<div class="cards">
+<div class="card">
+<a href="https://i.ibb.co/2n4YZHX/IMG-20220415-WA0013.jpg" class="item" id="qris">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<path fill="none" d="M0 0h24v24H0z" />
+<path d="M16 17v-1h-3v-3h3v2h2v2h-1v2h-2v2h-2v-3h2v-1h1zm5 4h-4v-2h2v-2h2v4zM3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zM6 6h2v2H6V6zm0 10h2v2H6v-2zM16 6h2v2h-2V6z" fill="rgba(255,255,255,1)" />
+</svg>
+</a>
+<p>QRIS</p></center>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head><center><title>ISI SALDO MIYA PAY VIA WHATSAPP</title></center> <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> </head> <body> <div class="container"> <div class="col-lg-6 col-lg-offset-3"> <center><h4><b>
+
+
+</b></h4></center> <div class="panel panel-success"> <div class="panel-heading"> <marquee><center><b>ISI SALDO (DEPOSIT) VIA WHATSAPP SLOW RESPON, WAJIB LAMPIRKAN BUKTI TRANSFER.</b></center></marquee> </div> <div class="panel-body"> <div class="form-group"> <label>Nama (sesuai di aplikasi)</label> <input type="text" name="name" class="form-control" placeholder="Nama" id="name"> </div> <div class="form-group"> <label>Email (sesuai di aplikasi)</label> <input type="email" name="email" class="form-control" placeholder="Email" id="email"> </div> <div class="form-group"> <label>Nomor WhatsApp (sesuai di aplikasi)</label> <input type="text" name="phone" class="form-control" placeholder="Nomor WhatsApp" id="phone"> </div> <div class="form-group"> <label>Jumlah TopUp Saldo</label> <input type="text" name="topup" class="form-control" placeholder="Minimal 10.000" id="topup"> </div> <div class="form-group"> <label>Pilih Pembayaran</label> <select name="pembayaran" class="form-control" id="pembayaran"> <option>-- Pilih Pembayaran --</option> 
+
+<option value="QRIS">QRIS</option>
+
+<option value="GOPAY">GOPAY</option>
+
+<option value="DANA">DANA</option>
+
+<option value="LINKAJA">LINKAJA</option>
+
+<option value="BANK PERMATA">BANK PERMATA (Virtual Account)</option>
+
+<option value="BANK BNI">BANK BNI (Virtual Account)</option>
+
+<option value="BANK MANDIRI">BANK MANDIRI (Virtual Account)</option>
+
+<option value="BANK BRI">BANK BRI (Virtual Account)</option> 
+
+<option value="BANK BCA">BANK BCA (Virtual Account)</option> </select> </div> <div class="form-group"> <label>Catatan</label> <textarea name="description" class="form-control" rows="3" id="description"></textarea> </div> <div class="form-group"> 
+
+
+
+<center>
+
+
+<button class="btn btn-success send">Kirim via WhatsApp</button> </div> <div id="text-info"></div> </div> </div> </div> </div> <script> $(document).on('click','.send', function(){ /* Inputan Formulir */ var input_name = $("#name").val(), input_email = $("#email").val(), input_phone = $("#phone").val(), input_topup = $("#topup").val(), input_product = $("#pembayaran").val(), input_description = $("#description").val(); /* Pengaturan Whatsapp */ var walink = 'https://web.whatsapp.com/send', phone = '6281911930526', text = 'Halo saya ingin Top Up Saldo MIYA PAY (VIA WHATSAPP) ', text_yes = 'Pesanan Anda berhasil terkirim.', text_no = 'Isilah formulir terlebih dahulu.'; /* Smartphone Support */ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) { var walink = 'whatsapp://send'; } if(input_name != "" && input_phone != "" && input_product != ""){ /* Whatsapp URL */ var checkout_whatsapp = walink + '?phone=' + phone + '&text=' + text + '%0A%0A' + '*Nama* : ' + input_name + '%0A' + '*Alamat Email* : ' + input_email + '%0A' + '*Nomor Whatsapp* : ' + input_phone + '%0A' + '*Jumlah TopUp* : ' + input_topup + '%0A' + '*pembayaran* : ' + input_product + '%0A' + '*Catatan* : ' + input_description + '%0A'; /* Whatsapp Window Open */ window.open(checkout_whatsapp,'_blank'); document.getElementById("text-info").innerHTML = '<div class="alert alert-success">'+text_yes+'</div>'; } else { document.getElementById("text-info").innerHTML = '<div class="alert alert-danger">'+text_no+'</div>'; } }); </script> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.3/jquery.min.js"></script> <script> $(document).ready(function(){ $('body').find('img[src$="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]').remove(); }); </script> <div style="text-align: right;position: fixed;z-index:9999999;bottom: 0;width: auto;right: 1%;cursor: pointer;line-height: 0;display:block !important;"><a title="Hosted on free web hosting 000webhost.com. Host your own website for FREE." target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"><img src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png" alt="www.000webhost.com"></a></div><script>function getCookie(t){for(var e=t+"=",n=decodeURIComponent(document.cookie).split(";"),o=0;o<n.length;o++){for(var i=n[o];" "==i.charAt(0);)i=i.substring(1);if(0==i.indexOf(e))return i.substring(e.length,i.length)}return""}getCookie("hostinger")&&(document.cookie="hostinger=;expires=Thu, 01 Jan 1970 00:00:01 GMT;",location.reload());var wordpressAdminBody=document.getElementsByClassName("wp-admin")[0],notification=document.getElementsByClassName("notice notice-success is-dismissible"),hostingerLogo=document.getElementsByClassName("hlogo"),mainContent=document.getElementsByClassName("notice_content")[0];if(null!=wordpressAdminBody&&notification.length>0&&null!=mainContent){var googleFont=document.createElement("link");googleFontHref=document.createAttribute("href"),googleFontRel=document.createAttribute("rel"),googleFontHref.value="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700",googleFontRel.value="stylesheet",googleFont.setAttributeNode(googleFontHref),googleFont.setAttributeNode(googleFontRel);var css="@media only screen and (max-width: 576px) {#main_content {max-width: 320px !important;} #main_content h1 {font-size: 30px !important;} #main_content h2 {font-size: 40px !important; margin: 20px 0 !important;} #main_content p {font-size: 14px !important;} #main_content .content-wrapper {text-align: center !important;}} @media only screen and (max-width: 781px) {#main_content {margin: auto; justify-content: center; max-width: 445px;}} @media only screen and (max-width: 1325px) {.web-hosting-90-off-image-wrapper {position: absolute; max-width: 95% !important;} .notice_content {justify-content: center;} .web-hosting-90-off-image {opacity: 0.3;}} @media only screen and (min-width: 769px) {.notice_content {justify-content: space-between;} #main_content {margin-left: 5%; max-width: 445px;} .web-hosting-90-off-image-wrapper {position: absolute; display: flex; justify-content: center; width: 100%; }} .web-hosting-90-off-image {max-width: 90%;} .content-wrapper {min-height: 454px; display: flex; flex-direction: column; justify-content: center; z-index: 5} .notice_content {display: flex; align-items: center;} * {-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;} .upgrade_button_red_sale{box-shadow: 0 2px 4px 0 rgba(255, 69, 70, 0.2); max-width: 350px; border: 0; border-radius: 3px; background-color: #ff4546 !important; padding: 15px 55px !important; font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 600; color: #ffffff;} .upgrade_button_red_sale:hover{color: #ffffff !important; background: #d10303 !important;}",style=document.createElement("style"),sheet=window.document.styleSheets[0];style.styleSheet?style.styleSheet.cssText=css:style.appendChild(document.createTextNode(css)),document.getElementsByTagName("head")[0].appendChild(style),document.getElementsByTagName("head")[0].appendChild(googleFont);var button=document.getElementsByClassName("upgrade_button_red")[0],link=button.parentElement;link.setAttribute("href","https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&utm_medium=panel&utm_campaign=000-wp"),link.innerHTML='<button class="upgrade_button_red_sale">Go for it</button>',(notification=notification[0]).setAttribute("style","padding-bottom: 0; padding-top: 5px; background-color: #040713; background-size: cover; background-repeat: no-repeat; color: #ffffff; border-left-color: #040713;"),notification.className="notice notice-error is-dismissible";var mainContentHolder=document.getElementById("main_content");mainContentHolder.setAttribute("style","padding: 0;"),hostingerLogo[0].remove();var h1Tag=notification.getElementsByTagName("H1")[0];h1Tag.className="000-h1",h1Tag.innerHTML="Black Friday Prices",h1Tag.setAttribute("style",'color: white; font-family: "Roboto", sans-serif; font-size: 22px; font-weight: 700; text-transform: uppercase;');var h2Tag=document.createElement("H2");h2Tag.innerHTML="Get 90% Off!",h2Tag.setAttribute("style",'color: white; margin: 10px 0 15px 0; font-family: "Roboto", sans-serif; font-size: 60px; font-weight: 700; line-height: 1;'),h1Tag.parentNode.insertBefore(h2Tag,h1Tag.nextSibling);var paragraph=notification.getElementsByTagName("p")[0];paragraph.innerHTML="Get Web Hosting for $0.99/month + SSL Certificate for FREE!",paragraph.setAttribute("style",'font-family: "Roboto", sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 15px;');var list=notification.getElementsByTagName("UL")[0];list.remove();var org_html=mainContent.innerHTML,new_html='<div class="content-wrapper">'+mainContent.innerHTML+'</div><div class="web-hosting-90-off-image-wrapper"><img class="web-hosting-90-off-image" src="https://cdn.000webhost.com/000webhost/promotions/bf-2020-wp-inject-img.png"></div>';mainContent.innerHTML=new_html;var saleImage=mainContent.getElementsByClassName("web-hosting-90-off-image")[0]}</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.3/jquery.min.js"></script>
+<script>
+   $(document).ready(function(){      
+    $('body').find('img[src$="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]').remove();
+   }); 
+</script>
+
+</body> </html></center>
